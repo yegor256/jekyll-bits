@@ -23,6 +23,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'coveralls', '0.7.0'
   s.add_development_dependency 'rdoc', '3.11'
   s.add_development_dependency 'minitest', '5.4.0'
-  s.add_development_dependency 'rubocop', '0.24.1'
-  s.add_development_dependency 'rubocop-rspec', '1.1.0'
+  s.add_development_dependency 'rubocop', '0.46.0'
+  s.add_development_dependency 'rubocop-rspec', '1.8.0'
 end
