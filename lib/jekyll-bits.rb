@@ -22,6 +22,8 @@
 
 require 'liquid'
 
+puts "jekyll-bits is alive"
+
 # Jekyll module
 module Jekyll
   # All our custom filters
