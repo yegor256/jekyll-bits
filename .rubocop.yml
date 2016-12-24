@@ -1,5 +1,7 @@
 AllCops:
   DisplayCopNames: true
 
+Style/FileName:
+  Enabled: false
 MethodLength:
   Max: 30
