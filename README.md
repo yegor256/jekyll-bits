@@ -44,7 +44,13 @@ Then, in the HTML `<head>`:
 {{ page | jb_picture_head }}
 ```
 
-And in the HTML `<body>`:
+This meta information will be rendered:
+
+```html
+<meta property='og:image' content='...'/>
+```
+
+Then, in the HTML `<body>`:
 
 ```liquid
 {{ page | jb_picture_body }}
@@ -54,6 +60,16 @@ Or this way:
 
 ```liquid
 {% jb_picture_body %}
+```
+
+Something like that will be rendered:
+
+```html
+<figure class='jb_picture'>
+  <a href='...'>
+    <img alt='...' src='...'/>
+  </a>
+</figure>
 ```
 
 # License

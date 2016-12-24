@@ -32,7 +32,7 @@ module Jekyll
       else
         src = yaml
       end
-      "<meta property='og:image:url' content='#{src}'/>"
+      "<meta property='og:image' content='#{src}'/>"
     end
 
     def jb_picture_body(page)
