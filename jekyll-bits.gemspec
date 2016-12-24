@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = '2.2.2'
   s.required_ruby_version = '>= 1.9.3'
   s.name = 'jekyll-bits'
-  s.version = '1.0.snapshot'
+  s.version = '0.3'
   s.license = 'MIT'
   s.summary = 'Jekyll Bits'
   s.description = 'Useful and very simple Jekyll plugins'
