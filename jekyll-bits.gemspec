@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.email = 'yegor256@gmail.com'
   s.homepage = 'http://github.com/yegor256/jekyll-bits'
   s.files = `git ls-files`.split($RS)
-  s.test_files = s.files.grep(/^(test)\//)
+  s.test_files = s.files.grep(%r{^(test)/})
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md']
   s.add_runtime_dependency('jekyll', '>=1.5.1')

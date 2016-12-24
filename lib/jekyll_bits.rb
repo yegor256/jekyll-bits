@@ -22,38 +22,40 @@
 
 require 'liquid'
 
+# Jekyll module
 module Jekyll
+  # All our custom filters
   module JbFilters
     def jb_picture_head(page)
       yaml = page['jb_picture']
       return unless yaml
-      if yaml.kind_of?(Array)
-        src = yaml['src']
-      else
-        src = yaml
-      end
+      src = if yaml.is_a?(Array)
+              yaml['src']
+            else
+              yaml
+            end
       "<meta property='og:image' content='#{src}'/>"
     end
 
     def jb_picture_body(page)
       yaml = page['jb_picture']
       return unless yaml
-      if yaml.kind_of?(Array)
-        "<figure class='jb_picture'><a" +
-          " href='#{CGI.escapeElement(yaml['href'])}'>" +
-          "<img alt='#{CGI.escapeElement(yaml['alt'])}'" +
-          " src='#{CGI.escapeElement(yaml['src'])}'/></a></figure>"
+      if yaml.is_a?(Array)
+        "<figure class='jb_picture'><a \
+href='#{CGI.escapeElement(yaml['href'])}'>\
+<img alt='#{CGI.escapeElement(yaml['alt'])}' \
+src='#{CGI.escapeElement(yaml['src'])}'/></a></figure>"
       else
-        "<figure class='jb_picture'><img" +
-          " alt='front picture'" +
-          " src='#{CGI.escapeElement(yaml)}'/></figure>"
+        "<figure class='jb_picture'><img \
+alt='front picture' src='#{CGI.escapeElement(yaml)}'/></figure>"
       end
     end
   end
 
+  # Jekyll block
   class JbPictureBlock < Liquid::Tag
     def render(context)
-      JbFilters::jb_picture_body(context.registers[:page])
+      JbFilters.jb_picture_body(context.registers[:page])
     end
   end
 end

@@ -1,2 +1,5 @@
+AllCops:
+  DisplayCopNames: true
+
 MethodLength:
   Max: 30
