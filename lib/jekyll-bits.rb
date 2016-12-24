@@ -22,7 +22,7 @@
 
 require 'liquid'
 
-puts "jekyll-bits is alive"
+puts 'jekyll-bits is alive'
 
 # Jekyll module
 module Jekyll
