@@ -57,7 +57,7 @@ alt='front picture' src='#{CGI.escapeElement(yaml)}'/></figure>"
   # Jekyll block
   class JbPictureBlock < Liquid::Tag
     def render(context)
-      JbFilters.jb_picture_body(context.registers[:page])
+      Jekyll::JbFilters.jb_picture_body(context.registers[:page])
     end
   end
 end
