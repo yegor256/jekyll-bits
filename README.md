@@ -6,7 +6,7 @@
 [![Dependency Status](https://gemnasium.com/yegor256/jekyll-bits.svg)](https://gemnasium.com/yegor256/jekyll-bits)
 [![Code Climate](http://img.shields.io/codeclimate/github/yegor256/jekyll-bits.svg)](https://codeclimate.com/github/yegor256/jekyll-bits)
 
-It's a collection of very simply and useful Jekyll plugins,
+It's a collection of very simply and useful [Jekyll](https://jekyllrb.com/) plugins,
 which I'm using on [my blog](https://github.com/yegor256/blog).
 
 To start, add it to your `_config.yml`:
@@ -16,7 +16,7 @@ gems:
   - jekyll-bits
 ```
 
-# Main Picture
+# `jb_picture`
 
 Add this to the [front matter](https://jekyllrb.com/docs/frontmatter/) of
 your Jekyll page:
@@ -27,7 +27,7 @@ jb_picture: http://...
 ---
 ```
 
-Or, with more details:
+Or with more details:
 
 ```yaml
 ---
@@ -38,16 +38,22 @@ jb_picture:
 ---
 ```
 
-Then, in the HTML `<body>`:
+Then, in the HTML `<head>`:
+
+```liquid
+{{ page | jb_picture_head }}
+```
+
+And in the HTML `<body>`:
 
 ```liquid
 {{ page | jb_picture_body }}
 ```
 
-And in the HTML `<head>`:
+Or this way:
 
 ```liquid
-{{ page | jb_picture_head }}
+{% jb_picture_body %}
 ```
 
 # License

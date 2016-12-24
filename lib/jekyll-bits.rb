@@ -50,6 +50,13 @@ module Jekyll
       end
     end
   end
+
+  class JbPictureBlock < Liquid::Tag
+    def render(context)
+      JbFilters::jb_picture_body(context.registers[:page])
+    end
+  end
 end
 
 Liquid::Template.register_filter(Jekyll::JbFilters)
+Liquid::Template.register_tag('jb_picture_body', Jekyll::JbPictureBlock)
