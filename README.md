@@ -32,9 +32,12 @@ Or with more details:
 ```yaml
 ---
 jb_picture:
-  src: ... SRC attribute of <IMG>
-  alt: ... ALT attribute of <IMG>
-  href: ... HREF attribute of <A>
+  src: SRC attribute of <IMG> (mandatory)
+  alt: ALT attribute of <IMG> (optional)
+  href: HREF attribute of <A> (optional)
+  caption: text of <FIGCAPTION> (optional)
+  width: width in pixels (optional)
+  height: height in pixels (optional)
 ---
 ```
 

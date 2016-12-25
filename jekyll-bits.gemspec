@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('jekyll', '>=1.5.1')
   s.add_development_dependency 'bundler', '~> 1.5'
   s.add_development_dependency 'coveralls', '0.7.0'
-  s.add_development_dependency 'minitest', '5.4.0'
+  s.add_development_dependency 'test-unit', '3.0.8'
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rdoc', '3.11'
   s.add_development_dependency 'rubocop', '0.46.0'

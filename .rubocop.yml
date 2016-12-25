@@ -7,3 +7,11 @@ MethodLength:
   Max: 30
 Metrics/BlockLength:
   Max: 50
+Style/ConditionalAssignment:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Max: 20
+Metrics/CyclomaticComplexity:
+  Max: 15
+Metrics/AbcSize:
+  Max: 40
