@@ -31,7 +31,8 @@ module Jekyll
     def jb_picture_head(page)
       yaml = page['jb_picture']
       return unless yaml
-      if yaml.is_a?(Array)
+      if yaml.is_a?(Hash)
+        raise "src is absent for jb_picture in #{page.url}" unless yaml['src']
         src = yaml['src']
       else
         src = yaml

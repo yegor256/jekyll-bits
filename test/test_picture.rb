@@ -31,10 +31,20 @@ require_relative '../lib/jekyll-bits/picture'
 # License:: MIT
 module Jekyll
   class TestPicture < Test::Unit::TestCase
-    def test_generates_html_head
+    def test_generates_html_simple_head
       html = JbBox.new.jb_picture_head('jb_picture' => '/img.png')
       assert_match(/meta/, html)
       assert_match(/img\.png/, html)
+    end
+
+    def test_generates_html_complex_head
+      html = JbBox.new.jb_picture_head(
+        'jb_picture' => {
+          'src' => '/img2.png'
+        }
+      )
+      assert_match(/meta/, html)
+      assert_match(/img2\.png/, html)
     end
 
     def test_generates_html_simple_body
