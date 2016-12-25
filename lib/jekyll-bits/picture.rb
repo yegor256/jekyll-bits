@@ -70,10 +70,15 @@ module Jekyll
     end
   end
 
+  # Box for testing and calling static methods.
+  class JbBox
+    include JbFilters
+  end
+
   # Jekyll block
   class JbPictureBlock < Liquid::Tag
     def render(context)
-      Jekyll::JbFilters.jb_picture_body(context.registers[:page])
+      JbBox.new.jb_picture_body(context.registers[:page])
     end
   end
 end

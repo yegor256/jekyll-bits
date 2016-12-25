@@ -25,42 +25,39 @@
 require 'test/unit'
 require_relative '../lib/jekyll-bits/picture'
 
-# Test box.
-class Box
-  include Jekyll::JbFilters
-end
-
 # Picture test.
 # Author:: Yegor Bugayenko (yegor256@gmail.com)
 # Copyright:: Copyright (c) 2016 Yegor Bugayenko
 # License:: MIT
-class TestPicture < Test::Unit::TestCase
-  def test_generates_html_head
-    html = Box.new.jb_picture_head('jb_picture' => '/img.png')
-    assert_match(/meta/, html)
-    assert_match(/img\.png/, html)
-  end
+module Jekyll
+  class TestPicture < Test::Unit::TestCase
+    def test_generates_html_head
+      html = JbBox.new.jb_picture_head('jb_picture' => '/img.png')
+      assert_match(/meta/, html)
+      assert_match(/img\.png/, html)
+    end
 
-  def test_generates_html_simple_body
-    html = Box.new.jb_picture_body('jb_picture' => '/img1.png')
-    assert_match(/img/, html)
-    assert_match(/figure/, html)
-  end
+    def test_generates_html_simple_body
+      html = JbBox.new.jb_picture_body('jb_picture' => '/img1.png')
+      assert_match(/img/, html)
+      assert_match(/figure/, html)
+    end
 
-  def test_generates_html_complex_body
-    html = Box.new.jb_picture_body(
-      'jb_picture' => {
-        'src' => '/img1.png',
-        'href' => 'http://www.yegor256.com',
-        'caption' => 'it is <simple>',
-        'alt' => "nothing 'to' say",
-        'width' => 500
-      }
-    )
-    assert_match(/figcaption/, html)
-    assert_match(/figure/, html)
-    assert_match(/<figcaption>it is &lt;simple&gt;/, html)
-    assert_match(/alt='nothing &#39;to&#39; say'/, html)
-    assert_match(/width='500'/, html)
+    def test_generates_html_complex_body
+      html = JbBox.new.jb_picture_body(
+        'jb_picture' => {
+          'src' => '/img1.png',
+          'href' => 'http://www.yegor256.com',
+          'caption' => 'it is <simple>',
+          'alt' => "nothing 'to' say",
+          'width' => 500
+        }
+      )
+      assert_match(/figcaption/, html)
+      assert_match(/figure/, html)
+      assert_match(/<figcaption>it is &lt;simple&gt;/, html)
+      assert_match(/alt='nothing &#39;to&#39; say'/, html)
+      assert_match(/width='500'/, html)
+    end
   end
 end
