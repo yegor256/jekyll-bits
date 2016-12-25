@@ -72,6 +72,7 @@ Something like that will be rendered:
   <a href='...'>
     <img alt='...' src='...'/>
   </a>
+  <figcaption>...</figcaption>
 </figure>
 ```
 
