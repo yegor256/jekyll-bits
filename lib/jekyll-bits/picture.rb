@@ -22,6 +22,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+require 'digest/md5'
 require 'liquid'
 
 # Jekyll module
@@ -53,10 +54,15 @@ module Jekyll
       if yaml.is_a?(Hash)
         raise "src is absent for jb_picture in #{page.url}" unless yaml['src']
         html += CGI.escapeElement(yaml['src'])
+        md5 = Digest::MD5.new.hexdigest(yaml['src'])
       else
         html += yaml
+        md5 = Digest::MD5.new.hexdigest(yaml)
       end
+      md5 = md5[0, 8]
       html += "'"
+      html += " longdesc='##{md5}'" \
+        if yaml.is_a?(Hash) && yaml['caption']
       html += " width='#{yaml['width']}'" \
         if yaml.is_a?(Hash) && yaml['width']
       html += " height='#{yaml['height']}'" \
@@ -65,8 +71,10 @@ module Jekyll
       html = "<a href='#{CGI.escapeHTML(yaml['href'])}'>#{html}</a>" \
         if yaml.is_a?(Hash) && yaml['href']
       html = "<figure class='jb_picture'>" + html
-      html += "<figcaption>#{CGI.escapeHTML(yaml['caption'])}</figcaption>" \
-        if yaml.is_a?(Hash) && yaml['caption']
+      if yaml.is_a?(Hash) && yaml['caption']
+        html += "<figcaption id='#{md5}'>" \
+          "#{CGI.escapeHTML(yaml['caption'])}</figcaption>"
+      end
       html + '</figure>'
     end
   end
