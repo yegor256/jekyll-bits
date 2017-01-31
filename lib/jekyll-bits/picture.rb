@@ -30,37 +30,23 @@ module Jekyll
   # All our custom filters
   module JbFilters
     def jb_picture_head(page)
-      yaml = page['jb_picture']
-      return unless yaml
-      if yaml.is_a?(Hash)
-        raise "src is absent for jb_picture in #{page.url}" unless yaml['src']
-        src = yaml['src']
-      else
-        src = yaml
-      end
-      "<meta property='og:image' content='#{src}'/>"
+      uri = uri(page)
+      return '' if uri.empty?
+      "<meta property='og:image' content='#{CGI.escapeElement(uri)}'/>"
     end
 
     def jb_picture_body(page)
+      uri = uri(page)
+      return '' if uri.empty?
       yaml = page['jb_picture']
-      return unless yaml
       html = "<img itemprop='image' alt='"
-      if yaml.is_a?(Hash) && yaml['alt']
+      if yaml && yaml.is_a?(Hash) && yaml['alt']
         html += CGI.escapeHTML(yaml['alt'])
       else
         html += 'front image'
       end
-      html += "' src='"
-      if yaml.is_a?(Hash)
-        raise "src is absent for jb_picture in #{page.url}" unless yaml['src']
-        html += CGI.escapeElement(yaml['src'])
-        md5 = Digest::MD5.new.hexdigest(yaml['src'])
-      else
-        html += yaml
-        md5 = Digest::MD5.new.hexdigest(yaml)
-      end
-      md5 = md5[0, 8]
-      html += "'"
+      html += "' src='#{CGI.escapeElement(uri)}'"
+      md5 = Digest::MD5.new.hexdigest(uri)[0, 8]
       html += " longdesc='##{md5}'" \
         if yaml.is_a?(Hash) && yaml['caption']
       html += " width='#{yaml['width']}'" \
@@ -76,6 +62,22 @@ module Jekyll
           "#{CGI.escapeHTML(yaml['caption'])}</figcaption>"
       end
       html + '</figure>'
+    end
+
+    private
+
+    def uri(page)
+      uri = ''
+      uri = page['image'] if page['image']
+      yaml = page['jb_picture']
+      if yaml
+        if yaml.is_a?(Hash)
+          uri = yaml['src'] if yaml['src']
+        else
+          uri = yaml
+        end
+      end
+      uri
     end
   end
 

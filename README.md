@@ -76,6 +76,19 @@ Something like that will be rendered:
 </figure>
 ```
 
+You can also define your picture URL in `image`, for example:
+
+```yaml
+---
+image: /images/2017/01/hello-world.jpg
+jb_picture:
+  alt: Hello, world!
+  caption: This is my hello world picture for you
+  width: 1280
+  height: 800
+---
+```
+
 # License
 
 (The MIT License)
