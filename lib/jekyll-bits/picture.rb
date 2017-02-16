@@ -32,7 +32,8 @@ module Jekyll
     def jb_picture_head(page)
       uri = uri(page)
       return '' if uri.empty?
-      "<meta property='og:image' content='#{CGI.escapeElement(uri)}'/>"
+      "<meta name='og:image' content='#{CGI.escapeElement(uri)}'/>\
+<meta name='twitter:image' content='#{CGI.escapeElement(uri)}'/>"
     end
 
     def jb_picture_body(page)
