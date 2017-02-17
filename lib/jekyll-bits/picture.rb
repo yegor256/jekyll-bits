@@ -68,7 +68,7 @@ module Jekyll
 
     private
 
-    @home = nil
+    @@home = nil
 
     def uri(page)
       uri = ''
@@ -87,15 +87,15 @@ module Jekyll
     end
 
     def home
-      if @home.nil?
-        @home = Jekyll.configuration({})['url']
-        if @home.nil?
-          @home = ''
+      if @@home.nil?
+        @@home = Jekyll.configuration({})['url']
+        if @@home.nil?
+          @@home = ''
         else
-          @home.gsub!(%r{/$}, '')
+          @@home.gsub!(%r{/$}, '')
         end
       end
-      @home
+      @@home
     end
   end
 

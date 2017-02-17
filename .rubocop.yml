@@ -9,6 +9,8 @@ Metrics/BlockLength:
   Max: 50
 Style/ConditionalAssignment:
   Enabled: false
+Style/ClassVars:
+  Enabled: false
 Metrics/PerceivedComplexity:
   Max: 20
 Metrics/CyclomaticComplexity:
