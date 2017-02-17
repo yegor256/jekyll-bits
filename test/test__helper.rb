@@ -24,6 +24,8 @@
 
 module Jekyll
   def self.configuration(_)
-    {}
+    {
+      'url' => 'http://www.yegor256.com/'
+    }
   end
 end

@@ -82,7 +82,7 @@ module Jekyll
       uri = URI.parse(uri)
       unless %w(http https).include?(uri.scheme)
         home = Jekyll.configuration({})['url']
-        uri = home.gsub(%r{/$}, '') + uri unless home.nil?
+        uri = home.gsub(%r{/$}, '') + uri.to_s unless home.nil?
       end
       uri.to_s
     end
