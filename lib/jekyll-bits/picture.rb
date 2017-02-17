@@ -68,6 +68,8 @@ module Jekyll
 
     private
 
+    @home = nil
+
     def uri(page)
       uri = ''
       uri = page['image'] if page['image']
@@ -80,11 +82,20 @@ module Jekyll
         end
       end
       uri = URI.parse(uri)
-      unless %w(http https).include?(uri.scheme)
-        home = Jekyll.configuration({})['url']
-        uri = home.gsub(%r{/$}, '') + uri.to_s unless home.nil?
-      end
+      uri = home + uri.to_s unless %w(http https).include?(uri.scheme)
       uri.to_s
+    end
+
+    def home
+      if @home.nil?
+        @home = Jekyll.configuration({})['url']
+        if @home.nil?
+          @home = ''
+        else
+          @home.gsub!(%r{/$}, '')
+        end
+      end
+      @home
     end
   end
 
