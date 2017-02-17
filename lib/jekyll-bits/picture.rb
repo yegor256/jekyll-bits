@@ -24,6 +24,7 @@
 
 require 'digest/md5'
 require 'liquid'
+require 'uri'
 
 # Jekyll module
 module Jekyll
