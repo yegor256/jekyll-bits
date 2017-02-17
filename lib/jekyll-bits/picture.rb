@@ -78,7 +78,12 @@ module Jekyll
           uri = yaml
         end
       end
-      uri
+      uri = URI.parse(uri)
+      unless %w(http https).include?(uri.scheme)
+        home = Jekyll.configuration({})['url']
+        uri = home.gsub(%r{/$}, '') + uri unless home.nil?
+      end
+      uri.to_s
     end
   end
 
