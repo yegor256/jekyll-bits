@@ -47,6 +47,17 @@ module Jekyll
       assert_match(/img2\.png/, html)
     end
 
+    def test_calculates_image_size
+      html = JbBox.new.jb_picture_head(
+        'jb_picture' => {
+          'src' => 'http://www.yegor256.com/images/2017/02/the-deer-hunter.jpg'
+        }
+      )
+      assert_match(/meta/, html)
+      assert_contains("<meta name='og:image:width' content='1280'/>", html)
+      assert_contains("<meta name='og:image:height' content='543'/>", html)
+    end
+
     def test_generates_html_simple_body
       html = JbBox.new.jb_picture_body('jb_picture' => '/img1.png')
       assert_match(/img/, html)
@@ -68,6 +79,12 @@ module Jekyll
       assert_match(/<figcaption id='79535e1e'>it is &lt;simple&gt;/, html)
       assert_match(/alt='nothing &#39;to&#39; say'/, html)
       assert_match(/width='500'/, html)
+    end
+
+    private
+
+    def assert_contains(substring, string, *args)
+      assert(string.include?(substring), *args)
     end
   end
 end

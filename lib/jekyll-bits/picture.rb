@@ -37,7 +37,7 @@ module Jekyll
       html = "<meta name='og:image' content='#{CGI.escapeElement(uri)}'/>"
       html += "<meta name='twitter:image' content='#{CGI.escapeElement(uri)}'/>"
       path = uri
-      path = File.join(Dir.pwd, path) if \
+      path = File.join(Dir.pwd, path) unless \
         %w(http https).include?(URI.parse(uri).scheme)
       width, height = FastImage.size(path)
       html += "<meta name='og:image:width' content='#{width}'/>" if width
