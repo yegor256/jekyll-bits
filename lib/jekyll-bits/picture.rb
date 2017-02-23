@@ -25,6 +25,7 @@
 require 'digest/md5'
 require 'liquid'
 require 'uri'
+require 'fastimage'
 
 # Jekyll module
 module Jekyll
@@ -33,8 +34,15 @@ module Jekyll
     def jb_picture_head(page)
       uri = uri(page)
       return '' if uri.empty?
-      "<meta name='og:image' content='#{CGI.escapeElement(uri)}'/>\
-<meta name='twitter:image' content='#{CGI.escapeElement(uri)}'/>"
+      html = "<meta name='og:image' content='#{CGI.escapeElement(uri)}'/>"
+      html += "<meta name='twitter:image' content='#{CGI.escapeElement(uri)}'/>"
+      path = uri
+      path = File.join(Dir.pwd, path) if \
+        %w(http https).include?(URI.parse(uri).scheme)
+      width, height = FastImage.size(path)
+      html += "<meta name='og:image:width' content='#{width}'/>" if width
+      html += "<meta name='og:image:height' content='#{height}'/>" if height
+      html
     end
 
     def jb_picture_body(page)
