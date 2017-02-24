@@ -56,6 +56,8 @@ module Jekyll
       assert_match(/meta/, html)
       assert_contains("<meta name='og:image:width' content='1280'/>", html)
       assert_contains("<meta name='og:image:height' content='543'/>", html)
+      assert_contains("<meta name='twitter:image:width' content='1280'/>", html)
+      assert_contains("<meta name='twitter:image:height' content='543'/>", html)
     end
 
     def test_generates_html_simple_body
