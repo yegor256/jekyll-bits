@@ -40,8 +40,14 @@ module Jekyll
       path = File.join(Dir.pwd, path) unless \
         %w(http https).include?(URI.parse(uri).scheme)
       width, height = FastImage.size(path)
-      html += "<meta name='og:image:width' content='#{width}'/>" if width
-      html += "<meta name='og:image:height' content='#{height}'/>" if height
+      if width
+        html += "<meta name='og:image:width' content='#{width}'/>
+<meta name='twitter:image:width' content='#{width}'/>"
+      end
+      if height
+        html += "<meta name='og:image:height' content='#{height}'/>
+<meta name='twitter:image:height' content='#{height}'/>"
+      end
       html
     end
 
