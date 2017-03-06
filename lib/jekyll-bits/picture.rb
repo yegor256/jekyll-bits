@@ -95,8 +95,10 @@ module Jekyll
           uri = yaml
         end
       end
-      uri = URI.parse(uri)
-      uri = home + uri.to_s unless %w(http https).include?(uri.scheme)
+      unless uri.empty?
+        uri = URI.parse(uri)
+        uri = home + uri.to_s unless %w(http https).include?(uri.scheme)
+      end
       uri.to_s
     end
 
