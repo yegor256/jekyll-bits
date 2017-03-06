@@ -48,6 +48,11 @@ module Jekyll
         html += "<meta name='og:image:height' content='#{height}'/>
 <meta name='twitter:image:height' content='#{height}'/>"
       end
+      if width && width >= 1024 && height && height >= 768
+        html += "<meta name='twitter:card' content='summary_large_image'/>"
+      else
+        html += "<meta name='twitter:card' content='summary'/>"
+      end
       html
     end
 

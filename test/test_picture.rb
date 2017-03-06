@@ -34,6 +34,7 @@ module Jekyll
     def test_generates_html_simple_head
       html = JbBox.new.jb_picture_head('jb_picture' => '/img.png')
       assert_match(/meta/, html)
+      assert_contains("<meta name='twitter:card' content='summary'/>", html)
       assert_match(/img\.png/, html)
     end
 
