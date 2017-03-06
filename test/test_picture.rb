@@ -35,6 +35,10 @@ module Jekyll
       html = JbBox.new.jb_picture_head('jb_picture' => '/img.png')
       assert_match(/meta/, html)
       assert_contains("<meta name='twitter:card' content='summary'/>", html)
+      assert_contains(
+        "<meta name='twitter:image:alt' content='Main picture'/>",
+        html
+      )
       assert_match(/img\.png/, html)
     end
 
@@ -46,17 +50,23 @@ module Jekyll
     def test_generates_html_complex_head
       html = JbBox.new.jb_picture_head(
         'jb_picture' => {
-          'src' => '/img2.png'
+          'src' => '/img2.png',
+          'caption' => 'I love this image'
         }
       )
       assert_match(/meta/, html)
       assert_match(/img2\.png/, html)
+      assert_contains(
+        "<meta name='twitter:image:alt' content='I love this image'/>",
+        html
+      )
     end
 
     def test_calculates_image_size
       html = JbBox.new.jb_picture_head(
         'jb_picture' => {
-          'src' => 'http://www.yegor256.com/images/2017/02/the-deer-hunter.jpg'
+          'src' => 'http://www.yegor256.com/images/2017/02/the-deer-hunter.jpg',
+          'alt' => 'The Deer Hunter'
         }
       )
       assert_match(/meta/, html)
@@ -64,6 +74,9 @@ module Jekyll
       assert_contains("<meta name='og:image:height' content='543'/>", html)
       assert_contains("<meta name='twitter:image:width' content='1280'/>", html)
       assert_contains("<meta name='twitter:image:height' content='543'/>", html)
+      assert_contains(
+        "<meta name='twitter:image:alt' content='The Deer Hunter'/>", html
+      )
     end
 
     def test_generates_html_simple_body
@@ -91,8 +104,8 @@ module Jekyll
 
     private
 
-    def assert_contains(substring, string, *args)
-      assert(string.include?(substring), *args)
+    def assert_contains(substring, string)
+      assert(string.include?(substring), string)
     end
   end
 end

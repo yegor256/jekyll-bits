@@ -53,6 +53,8 @@ module Jekyll
       else
         html += "<meta name='twitter:card' content='summary'/>"
       end
+      html += "<meta name='twitter:image:alt' \
+content='#{CGI.escapeHTML(alt(page))}'/>"
       html
     end
 
@@ -60,13 +62,8 @@ module Jekyll
       uri = uri(page)
       return '' if uri.empty?
       yaml = page['jb_picture']
-      html = "<img itemprop='image' alt='"
-      if yaml && yaml.is_a?(Hash) && yaml['alt']
-        html += CGI.escapeHTML(yaml['alt'])
-      else
-        html += 'front image'
-      end
-      html += "' src='#{CGI.escapeElement(uri)}'"
+      html = "<img itemprop='image' alt='#{CGI.escapeHTML(alt(page))}'"
+      html += " src='#{CGI.escapeElement(uri)}'"
       md5 = Digest::MD5.new.hexdigest(uri)[0, 8]
       html += " longdesc='##{md5}'" \
         if yaml.is_a?(Hash) && yaml['caption']
@@ -117,6 +114,20 @@ module Jekyll
         end
       end
       @@home
+    end
+
+    def alt(page)
+      alt = ''
+      yaml = page['jb_picture']
+      if yaml && yaml.is_a?(Hash)
+        if yaml['alt']
+          alt = yaml['alt']
+        elsif yaml['caption']
+          alt = yaml['caption']
+        end
+      end
+      alt = 'Main picture' if alt.empty?
+      alt
     end
   end
 
