@@ -37,6 +37,11 @@ module Jekyll
       assert_match(/img\.png/, html)
     end
 
+    def test_generates_html_simple_head_with_no_image
+      html = JbBox.new.jb_picture_head({})
+      assert(html.empty?, html)
+    end
+
     def test_generates_html_complex_head
       html = JbBox.new.jb_picture_head(
         'jb_picture' => {
