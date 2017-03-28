@@ -32,7 +32,7 @@ module Jekyll
   # All our custom filters
   module JbFilters
     def jb_picture_head(page)
-      uri = uri(page)
+      uri = abs(uri(page))
       return '' if uri.empty?
       html = "<meta name='og:image' content='#{CGI.escapeElement(uri)}'/>"
       html += "<meta name='twitter:image' content='#{CGI.escapeElement(uri)}'/>"
@@ -97,6 +97,10 @@ content='#{CGI.escapeHTML(alt(page))}'/>"
           uri = yaml
         end
       end
+      uri.to_s
+    end
+
+    def abs(uri)
       unless uri.empty?
         uri = URI.parse(uri)
         uri = home + uri.to_s unless %w(http https).include?(uri.scheme)

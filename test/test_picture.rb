@@ -97,7 +97,7 @@ module Jekyll
       )
       assert_match(/figcaption/, html)
       assert_match(/figure/, html)
-      assert_match(/<figcaption id='79535e1e'>it is &lt;simple&gt;/, html)
+      assert_match(/<figcaption id='d9d1da45'>it is &lt;simple&gt;/, html)
       assert_match(/alt='nothing &#39;to&#39; say'/, html)
       assert_match(/width='500'/, html)
     end
