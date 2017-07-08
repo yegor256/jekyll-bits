@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
   s.test_files = s.files.grep(%r{^(test)/})
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md']
-  s.add_runtime_dependency('jekyll', '>=1.5.1')
-  s.add_runtime_dependency('fastimage')
+  s.add_runtime_dependency 'fastimage'
+  s.add_development_dependency 'jekyll', '3.4.0'
   s.add_development_dependency 'bundler', '~> 1.5'
   s.add_development_dependency 'coveralls', '0.7.0'
   s.add_development_dependency 'test-unit', '3.0.8'
