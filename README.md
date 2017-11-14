@@ -9,6 +9,10 @@
 It's a collection of very simply and useful [Jekyll](https://jekyllrb.com/) plugins,
 which I'm using on [my blog](https://github.com/yegor256/blog).
 
+**ATTENTION**: You
+[can't](https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/)
+use this plugin with GitHub Pages.
+
 To start, add it to your `_config.yml`:
 
 ```yaml
