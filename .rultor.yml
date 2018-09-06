@@ -2,7 +2,7 @@ assets:
   rubygems.yml: zerocracy/home#assets/rubygems.yml
 release:
   script: |-
-    sudo bundle install
+    bundle install
     rake
     rm -rf *.gem
     sed -i "s/1\.0\.snapshot/${tag}/g" jekyll-bits.gemspec
