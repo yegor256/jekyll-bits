@@ -32,7 +32,7 @@ module Jekyll
   # All our custom filters
   module JbFilters
     def jb_picture_head(page)
-      uri = abs(uri(page))
+      uri = jb_abs(jb_uri(page))
       return '' if uri.empty?
       html = "<meta name='og:image' content='#{CGI.escapeElement(uri)}'/>"
       html += "<meta name='twitter:image' content='#{CGI.escapeElement(uri)}'/>"
@@ -54,15 +54,15 @@ module Jekyll
         html += "<meta name='twitter:card' content='summary'/>"
       end
       html += "<meta name='twitter:image:alt' \
-content='#{CGI.escapeHTML(alt(page))}'/>"
+content='#{CGI.escapeHTML(jb_alt(page))}'/>"
       html
     end
 
     def jb_picture_body(page)
-      uri = uri(page)
+      uri = jb_uri(page)
       return '' if uri.empty?
       yaml = page['jb_picture']
-      html = "<img itemprop='image' alt='#{CGI.escapeHTML(alt(page))}'"
+      html = "<img itemprop='image' alt='#{CGI.escapeHTML(jb_alt(page))}'"
       html += " src='#{CGI.escapeElement(uri)}'"
       md5 = Digest::MD5.new.hexdigest(uri)[0, 8]
       html += " longdesc='##{md5}'" \
@@ -86,7 +86,7 @@ content='#{CGI.escapeHTML(alt(page))}'/>"
 
     @@home = nil
 
-    def uri(page)
+    def jb_uri(page)
       uri = ''
       uri = page['image'] if page['image']
       yaml = page['jb_picture']
@@ -100,15 +100,15 @@ content='#{CGI.escapeHTML(alt(page))}'/>"
       uri.to_s
     end
 
-    def abs(uri)
+    def jb_abs(uri)
       unless uri.empty?
         uri = URI.parse(uri)
-        uri = home + uri.to_s unless %w(http https).include?(uri.scheme)
+        uri = jb_home + uri.to_s unless %w(http https).include?(uri.scheme)
       end
       uri.to_s
     end
 
-    def home
+    def jb_home
       if @@home.nil?
         @@home = Jekyll.configuration({})['url']
         if @@home.nil?
@@ -120,7 +120,7 @@ content='#{CGI.escapeHTML(alt(page))}'/>"
       @@home
     end
 
-    def alt(page)
+    def jb_alt(page)
       alt = ''
       yaml = page['jb_picture']
       if yaml && yaml.is_a?(Hash)
