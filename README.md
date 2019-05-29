@@ -1,5 +1,5 @@
 [![DevOps By Rultor.com](http://www.rultor.com/b/yegor256/jekyll-bits)](http://www.rultor.com/p/yegor256/jekyll-bits)
-[![We recommend RubyMine](http://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
+[![We recommend RubyMine](https://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
 
 [![Build Status](https://travis-ci.org/yegor256/jekyll-bits.svg)](https://travis-ci.org/yegor256/jekyll-bits)
 [![Gem Version](https://badge.fury.io/rb/jekyll-bits.svg)](http://badge.fury.io/rb/jekyll-bits)
