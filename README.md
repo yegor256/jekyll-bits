@@ -1,7 +1,7 @@
 [![DevOps By Rultor.com](http://www.rultor.com/b/yegor256/jekyll-bits)](http://www.rultor.com/p/yegor256/jekyll-bits)
 [![We recommend RubyMine](https://www.elegantobjects.org/rubymine.svg)](https://www.jetbrains.com/ruby/)
 
-[![Build Status](https://travis-ci.org/yegor256/jekyll-bits.svg)](https://travis-ci.org/yegor256/jekyll-bits)
+[![CI](https://github.com/yegor256/jekyll-bits/actions/workflows/ci.yml/badge.svg)](https://github.com/yegor256/jekyll-bits/actions/workflows/ci.yml)
 [![Gem Version](https://badge.fury.io/rb/jekyll-bits.svg)](http://badge.fury.io/rb/jekyll-bits)
 [![Dependency Status](https://gemnasium.com/yegor256/jekyll-bits.svg)](https://gemnasium.com/yegor256/jekyll-bits)
 [![Code Climate](http://img.shields.io/codeclimate/github/yegor256/jekyll-bits.svg)](https://codeclimate.com/github/yegor256/jekyll-bits)

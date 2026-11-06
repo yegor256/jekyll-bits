@@ -20,12 +20,16 @@ Gem::Specification.new do |s|
   s.rdoc_options = ['--charset=UTF-8']
   s.extra_rdoc_files = ['README.md']
   s.add_runtime_dependency 'fastimage'
-  s.add_development_dependency 'jekyll', '3.4.0'
-  s.add_development_dependency 'bundler', '~> 1.5'
-  s.add_development_dependency 'coveralls', '0.7.0'
-  s.add_development_dependency 'test-unit', '3.0.8'
+  s.add_development_dependency 'jekyll', '~> 3.10.0'
+  s.add_development_dependency 'bundler', '~> 2.6'
+  s.add_development_dependency 'coveralls', '~> 0.8.23'
+  s.add_development_dependency 'test-unit', '~> 3.7'
+  # RuboCop 0.46 uses the positional Psych.safe_load API.
+  s.add_development_dependency 'psych', '~> 3.3'
+  # The legacy parser does not declare racc, a bundled gem on Ruby 3.3.
+  s.add_development_dependency 'racc', '~> 1.8'
   s.add_development_dependency 'rake'
-  s.add_development_dependency 'rdoc', '3.11'
+  s.add_development_dependency 'rdoc', '~> 6.0'
   s.add_development_dependency 'rubocop', '0.46.0'
   s.add_development_dependency 'rubocop-rspec', '1.8.0'
 end
