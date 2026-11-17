@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'coveralls', '~> 0.8.23'
   s.add_development_dependency 'test-unit', '~> 3.7'
   # RuboCop 0.46 uses the positional Psych.safe_load API.
-  s.add_development_dependency 'psych', '~> 3.3'
+  s.add_development_dependency 'psych', '~> 5.0'
   # The legacy parser does not declare racc, a bundled gem on Ruby 3.3.
   s.add_development_dependency 'racc', '~> 1.8'
   s.add_development_dependency 'rake'
